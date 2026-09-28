@@ -6,7 +6,7 @@ https://raw.githubusercontent.com/mauforonda/indicadores_dolar/main/dolar_sell.c
 
 El indicador es el promedio simple diario de `vwap_sale`. La fecha usada es UTC, igual que en el CSV original y en la serie histórica de referencia.
 
-La actualización se ejecuta todos los días a las 08:15 UTC y también se puede lanzar manualmente desde la pestaña **Actions**.
+La actualización se ejecuta todos los días a las 08:15 de Bolivia (12:15 UTC) y también se puede lanzar manualmente desde la pestaña **Actions**.
 
 Cuando el repositorio sea público, el enlace de descarga permanente será:
 

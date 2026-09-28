@@ -89,8 +89,12 @@ def build_workbook(rows: list[tuple[datetime, float, int, datetime]]) -> None:
         del workbook[SHEET_NAME]
     sheet = workbook.create_sheet(SHEET_NAME, 0)
     sheet.append(["Fecha (UTC)", "TC oficial BCB (venta)", "TC digital promedio", "Observaciones", "Prima digital (%)", "Ultima actualizacion (UTC)"])
+    last_official_rate: float | None = None
     for current_date, digital, observations, updated_at in rows:
-        official_rate = official.get(current_date.date())
+        published_rate = official.get(current_date.date())
+        if published_rate is not None:
+            last_official_rate = published_rate
+        official_rate = last_official_rate
         premium = digital / official_rate - 1 if official_rate else None
         sheet.append([current_date, official_rate, digital, observations, premium, updated_at])
     sheet.freeze_panes = "A2"

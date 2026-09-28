@@ -1,10 +1,11 @@
 # Tipo de cambio digital
 
-Este repositorio genera cada día `public/tipo_cambio_digital.xlsx` a partir de:
+Este repositorio genera cada día `public/tipo_cambio_digital.xlsx` con:
 
-https://raw.githubusercontent.com/mauforonda/indicadores_dolar/main/dolar_sell.csv
+- Tipo digital: promedio simple diario de `vwap_sale` de Mauforonda, agrupado por fecha UTC.
+- Tipo oficial: cotización de venta publicada por el Banco Central de Bolivia.
 
-El indicador es el promedio simple diario de `vwap_sale`. La fecha usada es UTC, igual que en el CSV original y en la serie histórica de referencia.
+Incluye además la prima porcentual del tipo digital respecto al oficial.
 
 La actualización se ejecuta todos los días a las 08:15 de Bolivia (12:15 UTC) y también se puede lanzar manualmente desde la pestaña **Actions**.
 

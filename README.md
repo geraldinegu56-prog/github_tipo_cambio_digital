@@ -7,7 +7,7 @@ Este repositorio genera cada día `public/tipo_cambio_digital.xlsx` con:
 
 Incluye además la prima porcentual del tipo digital respecto al oficial.
 
-La actualización se ejecuta todos los días a las 08:15 de Bolivia (12:15 UTC) y también se puede lanzar manualmente desde la pestaña **Actions**.
+La actualización se ejecuta todos los días a las 07:55 de Bolivia (11:55 UTC) y también se puede lanzar manualmente desde la pestaña **Actions**.
 
 Cuando el repositorio sea público, el enlace de descarga permanente será:
 

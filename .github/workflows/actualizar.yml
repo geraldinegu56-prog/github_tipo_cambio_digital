@@ -3,8 +3,8 @@ name: Actualizar tipo de cambio digital
 on:
   workflow_dispatch:
   schedule:
-    # 08:15 Bolivia (UTC-4), 15 minutos antes de la actualización manual habitual.
-    - cron: "15 12 * * *"
+    # 07:55 Bolivia (UTC-4), con margen ante retrasos del programador de GitHub.
+    - cron: "55 11 * * *"
 
 permissions:
   contents: write

@@ -3,7 +3,7 @@
 Este repositorio genera cada día `public/tipo_cambio_digital.xlsx` con:
 
 - Tipo digital: promedio simple diario de `vwap_sale` de Mauforonda, agrupado por fecha UTC.
-- Tipo oficial: cotización de venta publicada por el Banco Central de Bolivia.
+- Tipo oficial: cotización de compra publicada por el Banco Central de Bolivia.
 
 Incluye además la prima porcentual del tipo digital respecto al oficial.
 

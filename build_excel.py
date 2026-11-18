@@ -43,10 +43,11 @@ def official_rates(years: set[int]) -> dict[date, float]:
             raise ValueError(f"BCB {year}: no se encontró la cabecera DIAS")
         header_row, day_col = headers[0]
         columns = []
+        month = None
         for col in range(day_col + 1, table.shape[1]):
-            month = MONTHS.get(normalize(table.iat[header_row, col]))
+            month = MONTHS.get(normalize(table.iat[header_row, col])) or month
             quote = normalize(table.iat[header_row + 1, col])
-            if month and quote in {"venta", "oficial"}:
+            if month and quote in {"compra", "oficial"}:
                 columns.append((col, month, 1 if quote == "oficial" else 0))
         for row in range(header_row + 2, table.shape[0]):
             day = pd.to_numeric(table.iat[row, day_col], errors="coerce")
@@ -88,7 +89,7 @@ def build_workbook(rows: list[tuple[datetime, float, int, datetime]]) -> None:
     if SHEET_NAME in workbook.sheetnames:
         del workbook[SHEET_NAME]
     sheet = workbook.create_sheet(SHEET_NAME, 0)
-    sheet.append(["Fecha (UTC)", "TC oficial BCB (venta)", "TC digital promedio", "Observaciones", "Prima digital (%)", "Ultima actualizacion (UTC)"])
+    sheet.append(["Fecha (UTC)", "TC oficial BCB (compra)", "TC digital promedio", "Observaciones", "Prima digital (%)", "Ultima actualizacion (UTC)"])
     last_official_rate: float | None = None
     for current_date, digital, observations, updated_at in rows:
         published_rate = official.get(current_date.date())

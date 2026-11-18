@@ -15,7 +15,6 @@ import pandas as pd
 import requests
 from openpyxl import load_workbook
 from openpyxl.styles import Font, PatternFill
-from openpyxl.worksheet.table import Table, TableStyleInfo
 
 SOURCE_URL = "https://raw.githubusercontent.com/mauforonda/indicadores_dolar/main/dolar_sell.csv"
 BCB_URL = "https://www.bcb.gob.bo/tiposDeCambioHistorico/xls.php?anio={year}"
@@ -112,9 +111,6 @@ def build_workbook(rows: list[tuple[datetime, float, int, datetime]]) -> None:
         sheet.cell(row, 4).number_format = "0"
         sheet.cell(row, 5).number_format = "0.00%"
         sheet.cell(row, 6).number_format = "yyyy-mm-dd hh:mm"
-    table = Table(displayName="tblTC_DigitalOficial", ref=f"A1:F{sheet.max_row}")
-    table.tableStyleInfo = TableStyleInfo(name="TableStyleMedium2", showRowStripes=True)
-    sheet.add_table(table)
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     workbook.save(OUTPUT_PATH)
 
